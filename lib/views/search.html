@@ -1,0 +1,45 @@
+<!doctype html> 
+<html>
+    <!-- include bootstrap css styles -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <title>This is the search page title!</title>
+    </head> 
+    
+    <body>
+        <!-- navigator bar -->
+        <div style = "background-color: #1A5276 ">
+            <nav class="navbar navbar-dark justify-content-around container ">
+                <a class="navbar-brand" href = "/topic7/mid-term/"> Home </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/about"> About </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/search"> Search </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/addfood"> Add food </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/list"> List of food </a>
+            </nav>
+        </div><br></br>
+
+        <!-- body of text -->
+        <div class = "container">
+
+            <!-- prints out message if no food can be searched -->
+            <% if(success == false){ %>
+                <div class="alert alert-danger">
+                    <strong>Food cannot be found. Please try again.</strong>
+                </div>
+            <% } %>
+
+            <h1 class = "mb-4">Search</h1>
+            <p>Enter the food name that you would like to search:</p> <br></br>
+    
+            <form action="/topic7/mid-term/search-result-db" method="GET">
+                <input id="search-box" type="text" name="name" placeholder="flour" required> 
+                <input class = "btn btn-success" type="submit" value="Submit">
+            </form><br></br>
+        </div>
+               
+    </body>
+</html>
+

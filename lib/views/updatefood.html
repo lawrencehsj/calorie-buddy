@@ -1,0 +1,76 @@
+<!doctype html> 
+<html>
+    <!-- include bootstrap css styles -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <title>Update food</title>
+    </head> 
+    
+    <body>
+        <!-- navigator bar -->
+        <div style = "background-color: #1A5276 ">
+            <nav class="navbar navbar-dark justify-content-around container">
+                <a class="navbar-brand" href = "/topic7/mid-term/"> Home </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/about"> About </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/search"> Search </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/addfood"> Add food </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/list"> List of food </a>
+            </nav>
+        </div><br></br>
+
+        <!-- body of text -->
+        <div class = "container">
+            <h1 class = "mb-4"> Update food </h1>
+            <p>Please update the nutritional details for the selected food item. </p> 
+        </div>
+        
+        <!-- all the form inputs (name, amount ... sugar etc) -->
+        <!-- required attr added to the forms, so will be unable to submit unless all are filled in -->
+        <!-- passed in values into the form inputs based on the selected food item in the table for easy editing -->
+        <div class = "container">
+            <!-- action to go back to list -->
+            <form class = "form-control" method = "POST" action = "/topic7/mid-term/list">
+                
+                <!-- hidden id value to be passed to middleware -->
+                <input type="hidden" name="id" id ="field0" value = "<%= food.id %>" required>
+
+                <label for="name" class="col-sm-2 col-form-label">Food name:</label>
+                <input type="text" name="name" id ="field1" value = "<%= food.name %>" required> <br></br>
+    
+                <label for="amount" class="col-sm-2 col-form-label">Amount:</label>
+                <input type="text" name="amount" id ="field2" value = "<%= food.amount %>" required> <br></br>
+    
+                <label for="unit" class="col-sm-2 col-form-label">Measurement unit:</label>
+                <input type="text" name="unit" id ="field3" value = "<%= food.unit %>" required> <br></br>
+    
+                <label for="calories" class="col-sm-2 col-form-label">Calories:</label>
+                <input type="text" name="calories" id ="field4" value = "<%= food.calories %>" required> <br></br>
+    
+                <label for="carbs" class="col-sm-2 col-form-label">Carbs(g):</label>
+                <input type="text" name="carbs" id ="field5" value = "<%= food.carbs %>" required> <br></br>
+    
+                <label for="fats" class="col-sm-2 col-form-label">Fats(g):</label>
+                <input type="text" name="fats" id ="field6" value = "<%= food.fats %>" required> <br></br>
+    
+                <label for="protein" class="col-sm-2 col-form-label">Protein(g):</label>
+                <input type="text" name="protein" id ="field7" value = "<%= food.protein %>" required> <br></br>
+    
+                <label for="salt" class="col-sm-2 col-form-label">Salt(g):</label>
+                <input type="text" name="salt" id ="field8" value = "<%= food.salt %>" required> <br></br> 
+    
+                <label for="sugar" class="col-sm-2 col-form-label">Sugar(g):</label>
+                <input type="text" name="sugar" id ="field9" value = "<%= food.sugar %>" required> <br></br>
+    
+                <!-- DESC: back button to go back to list -->
+                <a href = "/topic7/mid-term/list" class = "btn btn-secondary">Back</a>
+                <!-- DESC: button to submit updated values to middleware to process. Tells user that the update has
+                           been done upon submitting -->
+                <input class="btn btn-primary" type="submit" value="Submit"><br></br>
+            </form>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,122 @@
+<!doctype html> 
+<html>
+    <!-- include bootstrap css styles -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <title>List webpage!</title>
+    </head> 
+
+    <body>
+        <!-- navigator bar -->
+        <div style = "background-color: #1A5276 ">
+            <nav class="navbar navbar-dark justify-content-around container">
+                <a class="navbar-brand" href = "/topic7/mid-term/"> Home </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/about"> About </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/search"> Search </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/addfood"> Add food </a>
+                <a class="navbar-brand" href = "/topic7/mid-term/list"> List of food </a>
+            </nav>
+        </div><br></br>
+
+        <!-- declare total variables -->
+        <script>
+            var totalCalories=0;
+            var totalCarbs=0;
+            var totalFats=0;
+            var totalProtein=0;
+            var totalSalt=0;
+            var totalSugar=0;
+        </script>
+
+        <!-- body of text -->
+        <div class = "container">
+            <h1 class = "mb-4">Nutritional Information and Calorie Count</h1>
+            <!-- <a href = "/topic7/mid-term/addfood" class = "btn btn-success">Add food</a> -->
+            <p class = "mt-4">The nutritional facts for the selected ingredients are displayed here:</p><br></br>
+        </div>
+            
+        <!-- table of food data -->
+        <div class = "container">
+            <table class = "table">
+                <tr>
+                    <th>S/N</th>
+                    <th>Food name</th>
+                    <th>Amount</th>
+                    <th>Total Calories</th>
+                    <th>Total Carbs</th>
+                    <th>Total Fats</th>
+                    <th>Total Protein</th>
+                    <th>Total Salt</th>
+                    <th>Total Sugar</th>
+                    <th>Quantity</th>
+                </tr>
+
+                <% selectedFood.forEach(function(food){ %> 
+                <tr>
+                    <!-- storing the total ingredients' data to total variables -->
+                    <script>
+                        totalCalories += "<%= food.calories %>"  * "<%= food.quantity %>";
+                        totalCarbs +=    "<%= food.carbs %>"     * "<%= food.quantity %>";
+                        totalFats +=     "<%= food.fats %>"      * "<%= food.quantity %>";
+                        totalProtein +=  "<%= food.protein %>"   * "<%= food.quantity %>";
+                        totalSalt +=     "<%= food.salt %>"      * "<%= food.quantity %>";
+                        totalSugar +=    "<%= food.sugar %>"     * "<%= food.quantity %>";
+                    </script>
+
+                    <!-- calculating and displaying values based on ingredient details * quantity -->
+                    <td><%= food.id %></td>
+                    <td><%= food.name %></td> 
+                    <td><%= food.amount * food.quantity %><%= food.unit %></td> 
+                    <td><%= food.calories  * food.quantity %>kcal</td> 
+                    <td><%= parseFloat(food.carbs  * food.quantity).toFixed(0) %>g</td> 
+                    <td><%= parseFloat(food.fats  * food.quantity).toFixed(2) %>g</td>
+                    <td><%= parseFloat(food.protein * food.quantity).toFixed(2) %>g</td>
+                    <td><%= parseFloat(food.salt * food.quantity).toFixed(2) %>g</td>
+                    <td><%= parseFloat(food.sugar * food.quantity).toFixed(2) %>g</td> 
+                    <td><%= food.quantity%></td> 
+                </tr>
+                <% }) %>
+            </table><br></br>
+        </div>
+
+        <!-- table of [total values of everything] -->
+        <div class = "container">
+            <h2 class = "mb-4">Total Values for Recipe/Meal</h2>
+            <table class = "table">
+                <tr>
+                    <th>Total Calories</th>
+                    <th>Total Carbs</th>
+                    <th>Total Fats</th>
+                    <th>Total Protein</th>
+                    <th>Total Salt</th>
+                    <th>Total Sugar</th>
+                </tr>
+                <tr>
+                    <!-- adding unique id to each table data for [total values of everything] -->
+                    <td id = "totalCalories"></td>
+                    <td id = "totalCarbs"></td>
+                    <td id = "totalFats"></td>
+                    <td id = "totalProtein"></td>
+                    <td id = "totalSalt"></td>
+                    <td id = "totalSugar"></td>
+                </tr>
+            </table><br></br>
+            <!-- DESC: Button to go back to list -->
+            <a class="btn btn-secondary" href="/topic7/mid-term/list">Back</a>
+        </div>
+            <!-- DESC: Assign total vars to the table [total values of everything]-->
+            <script>
+                document.getElementById("totalCalories").innerHTML = totalCalories;
+                document.getElementById("totalCarbs").innerHTML = parseFloat(totalCarbs).toFixed(0);
+                document.getElementById("totalFats").innerHTML = parseFloat(totalFats).toFixed(2);
+                document.getElementById("totalProtein").innerHTML = parseFloat(totalProtein).toFixed(2);
+                document.getElementById("totalSalt").innerHTML = parseFloat(totalSalt).toFixed(2);
+                document.getElementById("totalSugar").innerHTML = parseFloat(totalSugar).toFixed(2);
+            </script>
+    </body> 
+</html>
+
+
