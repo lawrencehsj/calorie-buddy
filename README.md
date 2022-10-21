@@ -19,5 +19,3 @@ List of food page             |  Nutritional info page
 * Update food page
 * List food page (including nutritional info)
 
-### Additional information
-The full report for this project can be found in the repository.
