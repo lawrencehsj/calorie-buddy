@@ -1,5 +1,3 @@
-# calorie-buddy
-
 # About the Project
 A small dynamic web application including routes, forms and database access that functions as a digital calorie counter, calculating and displaying nutritional facts for recipes/meals based on various food ingredients. This project explores routing and navigation functionalities using node and communicating with the database.
 
@@ -22,6 +20,7 @@ List of food page             |  Nutritional info page
 * Update food page
 * List food page (including nutritional info)
 
+<br>
 
 ## Getting Started
 
